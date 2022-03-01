@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My First Heroku App</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background-image: url('https://i.hizliresim.com/ocpriz2.jpg');">
+    <div class="col-md-9 col-sm-9 " style="margin:auto; margin-top:150px;">
+        <h3>Water Quality Test</h3><hr>
+        <form action="/predict" method = "post">
+            <div class="row">
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">pH</label>
+                    <input type="text" name="ph" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Hardness</label>
+                    <input type="text" name="hardness" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Solids</label>
+                    <input type="text" name="solids" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Chloramines</label>
+                    <input type="text" name="chloramines" class="form-control">
+                </div>
+            </div>
+            </div>
+			<div class="row">
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Sulfate</label>
+                    <input type="text" name="sulfate" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Conductivity</label>
+                    <input type="text" name="conductivity" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Organic Carbon</label>
+                    <input type="text" name="organic_carbon" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Trihalomethanes</label>
+                    <input type="text" name="trihalomethanes" class="form-control">
+                </div>
+            </div>
+			<div class="col-md-2">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Turbidity</label>
+                    <input type="text" name="turbidity" class="form-control">
+                </div>
+            </div>
+            </div>
+            <button type="reset" class="btn btn-danger">Clean</button>
+            <button type="submit" class="btn btn-info">Predict Potability</button>
+        </form><br>
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Classification Method</th>                    
+                <th scope="col">Classification Results</th>                     
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Logistic Regression</th>
+                    {% if predict_LR == potable %}
+                    <td style="color:red; font-weight:600;">Potable / Class: {{ predict_LR }}</td>                                                     
+                    {% elif predict_LR == notPotable %}
+                    <td style="color:red; font-weight:600;">Not Potable  / Class: {{ predict_LR }}</td>                           
+                    {% else %}
+                    <td style="color:red; font-weight:600;">Cannot Find Class</td>
+                    {% endif %}
+                </tr>              
+            </tbody>
+          </table>
+          <p><a href="https://www.kaggle.com/adityakadiwal/water-potability">The water quality dataset</a> in Kaggle was used for training the dataset related to the study.</p>
+    </div>
+</body>
+</html>
