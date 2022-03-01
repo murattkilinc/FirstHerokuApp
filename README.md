@@ -1,6 +1,6 @@
-# irisPredictApp
+# FirstHerokuApp
 
-In this repo, a flask-based web application was created using the iris dataset. I recommend compiling the application on VS Code.
+In this repo, a flask-based web application was created using the water quality dataset. I recommend compiling the application on VS Code.
 
 You can install the requirements with the following pip.
 ```
